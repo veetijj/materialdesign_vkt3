@@ -1,8 +1,7 @@
 import * as React from 'react';
-import { Appbar, TextInput } from 'react-native-paper'
+import { Appbar, TextInput, Button} from 'react-native-paper'
 import  MainAppBar  from './MainAppBar';
 import { StyleSheet, View } from 'react-native'
-import { Button } from 'react-native-paper'
 
 export default function Login() {
 
@@ -14,8 +13,11 @@ export default function Login() {
         if (formData.username.length > 0 && formData.password.length > 8) {
             setFormData({username: '', password: ''})
             setShowError(false)
+            alert('Form Submitted')
         }
+        
     }
+
     return (
         <>
         <MainAppBar title="Login" />
@@ -24,14 +26,14 @@ export default function Login() {
             <TextInput label="Username"
              style={styles.input_field}
              value={formData.username}
-             onChangeText={text => setFormData({...formData,username: text})}
+             onChangeText={text => setFormData({...formData, username: text})}
              error={formData.username.length === 0 && showError}
               />
             <TextInput label="Password" 
              style={styles.input_field} 
              keyboardType='visible-password'
              value={formData.password}
-             onChangeText={text => setFormData({...formData,password: text})}
+             onChangeText={text => setFormData({...formData, password: text})}
              error={formData.password.length < 8 && showError}
              />
             <Button mode="contained" 
